@@ -3,7 +3,7 @@
   cron:
     name=satis-build
     state=present
-    useri="{{ satis_user }}"
+    user="{{ satis_user }}"
     special_time='daily'
     job="{{ satis_build_command }}"
   when: satis_manage_cron
