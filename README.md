@@ -17,15 +17,16 @@ Role Variables
 
 ### System
 
-- `satis_user`: "satis"
-- `satis_group`: "satis"
-- `satis_user_home`: "/home/satis"
+- `satis_user`
+- `satis_group`
+- `satis_user_home`
 
 ### Install
 
 - `satis_installation`: Install directory
 - `satis_config_file`: Satis configuration file
 - `satis_build_dir`: Build directory
+- `satis_manage_cron`: (bool) manage crontab 
 
 ### Configuration
 
