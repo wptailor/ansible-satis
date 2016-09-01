@@ -5,6 +5,7 @@
     satis_require_all: false
     satis_require:
       'symfony/polyfill-apcu': '*'
+    satis_manage_cron: false
   pre_tasks:
     - name: GET_URL | Install composer
       get_url:
