@@ -3,7 +3,6 @@
 - name: USER | Create Satis user
   user:
     name="{{ satis_user }}"
-    group="{{ satis_user }}"
     createhome=yes
     home="{{ satis_user_home }}"
     state=present
