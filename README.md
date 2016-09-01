@@ -1,36 +1,53 @@
-Role Name
-=========
+Satis Ansible Role
+==================
+
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-HanXHX.satis-blue.svg)](https://galaxy.ansible.com/HanXHX/satis/) [![Build Status](https://travis-ci.org/HanXHX/ansible-satis.svg?branch=master)](https://travis-ci.org/HanXHX/ansible-satis)
 
 This is an ansible role for installing satis through composer.
 
 Requirements
 ------------
 
-  - php
-  - composer
+- php
+- composer
+- git
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### System
 
-    additional_composer_global_packages: {}
+- `satis_user`: "satis"
+- `satis_group`: "satis"
+- `satis_user_home`: "/home/satis"
 
-If you want to include additional packages, mention them in this list.
+### Install
+
+- `satis_installation`: Install directory
+- `satis_config_file`: Satis configuration file
+- `satis_build_dir`: Build directory
+
+### Configuration
+
+- `satis_repo_name`: (string) Repository name
+- `satis_repo_homepage`: (string) Repository URL
+- `satis_repos`: (hashlist)
+- `satis_require`: key/value hash with repositories version
+- `satis_skip_dev`: (bool)
+- `satis_composer_ignore_secure_http`: (bool)
+- `satis_require_all`: (bool)
+- `satis_require_dependencies`: (bool)
+- `satis_require_dev_dependencies`: (bool)
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: brachetti.satis, x: 42 }
+See [test playbook](tests/test.yml).
 
 License
 -------
@@ -40,4 +57,4 @@ MIT
 Author Information
 ------------------
 
-Original author is "Ronald Brachetti" (brachetti).
+- Twitter: [@hanxhx_](https://twitter.com/hanxhx_)

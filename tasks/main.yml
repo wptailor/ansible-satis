@@ -1,8 +1,13 @@
 ---
-- include: user.yml
-- include: composer.yml
-  tags:
-  - composer
-- include: satis.yml
-- include: cron.yml
 
+- name: INCLUDE | User
+  include: user.yml
+
+- name: INCLUDE | Install
+  include: install.yml
+
+- name: INCLUDE | Satis configuration
+  include: satis.yml
+
+- name: INCLUDE | Crontab configuration
+  include: cron.yml

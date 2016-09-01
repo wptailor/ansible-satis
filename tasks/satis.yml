@@ -1,26 +1,26 @@
 ---
-- name: create satis.json
-  template:
-    src: "satis.json.j2"
-    dest: "{{ satis_config_file }}"
+- name: TEMPLATE | Create satis.json
+  template: src="satis.json.j2" dest="{{ satis_config_file }}"
   become: yes
   become_user: "{{ satis_user }}"
   register: satis_config_file_created
 
-- name: create build dir
-  file:
-    owner: "{{ satis_user }}"
-    path: "{{ satis_build_dir }}"
-    state: directory
-    mode: "0733"
+- name: FILE | Create build dir
+  file: >
+    owner="{{ satis_user }}"
+    owner="{{ satis_group }}"
+    path="{{ satis_build_dir }}"
+    state=directory
+    mode="0755"
 
-- name: count number of files in {{ satis_build_dir }}
-  find:
-    paths: "{{ satis_build_dir }}"
+- name: Find | Count number of files in {{ satis_build_dir }}
+  find: paths="{{ satis_build_dir }}"
   register: find_satis_build_dir
 
-- name: build the repository
+- name: COMMAND | Build the repository
   command: "{{ satis_build_command }}"
   become: yes
   become_user: "{{ satis_user }}"
-  when: satis_config_file_created.changed == true or find_satis_build_dir.matched == 0
+  when: >
+    satis_config_file_created.changed == true or
+    find_satis_build_dir.matched == 0

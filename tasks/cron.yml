@@ -1,5 +1,5 @@
 ---
-- name: manage cron entry
+- name: CRON | Manage cron entry
   cron:
     name: satis-build
     state: present
