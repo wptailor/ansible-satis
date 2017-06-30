@@ -5,6 +5,7 @@
   register: satis_installed
 
 - block:
+
   - name: COMPOSER | Install satis
     composer:
       command="create-project"

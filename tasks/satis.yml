@@ -1,4 +1,5 @@
 ---
+
 - name: TEMPLATE | Create satis.json
   template: src="satis.json.j2" dest="{{ satis_config_file }}"
   become: yes
@@ -7,13 +8,13 @@
 
 - name: FILE | Create build dir
   file: >
-    owner="{{ satis_user }}"
-    owner="{{ satis_group }}"
-    path="{{ satis_build_dir }}"
-    state=directory
-    mode="0755"
+    owner: "{{ satis_user }}"
+    owner: "{{ satis_group }}"
+    path: "{{ satis_build_dir }}"
+    state: directory
+    mode: "0755"
 
-- name: Find | Count number of files in {{ satis_build_dir }}
+- name: FIND | Count number of files in {{ satis_build_dir }}
   find: paths="{{ satis_build_dir }}"
   register: find_satis_build_dir
 
