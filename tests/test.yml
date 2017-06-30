@@ -6,16 +6,28 @@
     satis_require:
       'symfony/polyfill-apcu': '*'
     satis_manage_cron: false
+
   pre_tasks:
+    - name: APT | Install tools
+      apt:
+        pkg: "{{ item }}"
+        update_cache: yes
+        cache_valid_time: 3600
+      with_items: ['git', 'ca-certificates']
+
+    - name: APT | Install PHP5
+      apt: pkg='php5-cli'
+      when: ansible_distribution_release == 'jessie'
+
+    - name: APT | Install PHP7.0
+      apt: pkg='php7.0-cli'
+      when: ansible_distribution_release == 'stretch'
+
     - name: GET_URL | Install composer
       get_url:
-        url=https://getcomposer.org/composer.phar
-        dest=/usr/local/bin/composer
-        mode=0755
-    - name: APT | Install Packages
-      apt: pkg={{ item }} state=present update_cache=yes cache_valid_time=3600
-      with_items:
-        - php5-cli
-        - git
+        url: https://getcomposer.org/composer.phar
+        dest: /usr/local/bin/composer
+        mode: 0755
+
   roles:
     - ../../
