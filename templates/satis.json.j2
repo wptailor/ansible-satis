@@ -9,7 +9,7 @@
 	"archive": {
 		"directory": "dist",
 		"format": "zip",
-		{%- if satis_archive_whitelist %}"whitelist": {{ satis_archive_whitelist | to_nice_json }},{% endif %}
-		{%- if satis_archive_blacklist %}"blacklist": {{ satis_archive_blacklist | to_nice_json }}{% endif %}
+		{% if satis_archive_whitelist %}"whitelist": {{ satis_archive_whitelist | to_nice_json(indent=20) }},{% endif %}
+		{% if satis_archive_blacklist %}"blacklist": {{ satis_archive_blacklist | to_nice_json(indent=20) }}{% endif %}
 	}
 }
