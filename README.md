@@ -27,6 +27,7 @@ Role Variables
 - `satis_config_file`: Satis configuration file
 - `satis_build_dir`: Build directory
 - `satis_manage_cron`: (bool) manage crontab 
+- `satis_version`: Satis version to install (alpha for latest pre-release, dev for master branch)
 
 ### Configuration
 

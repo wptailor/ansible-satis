@@ -10,6 +10,7 @@ satis_installation: "{{ satis_user_home }}/satis"
 satis_config_file: "{{ satis_user_home }}/satis.json"
 satis_build_dir: "/opt/satis"
 satis_manage_cron: true
+satis_version: "alpha"
 
 # Configuration
 satis_repo_name: "satis repository"
