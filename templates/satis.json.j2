@@ -7,8 +7,14 @@
 	"require-dependencies": {{ satis_require_dependencies | to_json }},
 	"require-dev-dependencies": {{ satis_require_dev_dependencies | to_json }},
 	"archive": {
-		{% if satis_archive_whitelist %}"whitelist": {{ satis_archive_whitelist | to_nice_json(indent=20) }},{% endif %}
-		{% if satis_archive_blacklist %}"blacklist": {{ satis_archive_blacklist | to_nice_json(indent=20) }},{% endif %}
+		"whitelist": [{% for item in satis_archive_whitelist %}
+
+			"{{ item }}"{% if not loop.last %},{% endif %}
+		{%- endfor %} ],
+		"blacklist": [{% for item in satis_archive_blacklist %}
+
+			"{{ item }}"{% if not loop.last %},{% endif %}
+		{%- endfor %} ],
 		"directory": "dist",
 		"format": "zip"
 	}
