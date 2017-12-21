@@ -34,12 +34,14 @@ Role Variables
 - `satis_repo_name`: (string) Repository name
 - `satis_repo_homepage`: (string) Repository URL
 - `satis_repos`: (hashlist)
-- `satis_require`: null (is don't needed) or key/value hash with repositories version
+- `satis_require`: (optional) key/value hash with repositories version
 - `satis_skip_dev`: (bool)
 - `satis_composer_ignore_secure_http`: (bool)
 - `satis_require_all`: (bool)
 - `satis_require_dependencies`: (bool)
 - `satis_require_dev_dependencies`: (bool)
+- `satis_archive_whitelist`: (optional) if set as a list of package names, satis will only dump the dist files of these packages
+- `satis_archive_blacklist`: (optional) if set as a list of package names, satis will not dump the dist files of these packages
 
 Dependencies
 ------------
