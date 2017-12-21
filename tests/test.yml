@@ -6,6 +6,12 @@
     satis_require:
       'symfony/polyfill-apcu': '*'
     satis_manage_cron: false
+    satis_archive_whitelist:
+      - test/test
+      - test/test1
+    satis_archive_blacklist:
+      - test/test
+      - test/test1
 
   pre_tasks:
     - name: APT | Install tools
