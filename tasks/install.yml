@@ -1,10 +1,21 @@
 ---
 
+- name: YUM | Install acl
+  yum:
+    name: acl
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: APT | Install acl
+  apt:
+    name: acl
+    state: present
+  when: ansible_os_family == "Debian"
+
 - name: STAT | Check if satis is installed
   stat:
     path: "{{ satis_installation }}"
   register: satis_installed
-
 
 - name: COMPOSER | Install satis
   composer:
