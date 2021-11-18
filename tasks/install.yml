@@ -21,7 +21,7 @@
   become_user: "{{ satis_user }}"
   composer:
     command: "create-project"
-    arguments: "composer/satis --stability={{ satis_version }} --no-dev --keep-vcs"
+    arguments: "composer/satis --stability={{ satis_version }} --keep-vcs"
     working_dir: "{{ satis_user_home }}"
   when: satis_installed.stat.exists == false
 
@@ -32,6 +32,17 @@
     arguments: "-g secure-http false"
     working_dir: "{{ satis_user_home }}"
   when: satis_composer_ignore_secure_http
+  
+- name: COMPOSER | Setup OAuth Tokens for polular GIT providers
+  become_user: "{{ satis_user }}"
+  composer:
+    command: "config"
+    arguments: "-g {{ item.name }} '{{ item.value }}'"
+    working_dir: "{{ satis_user_home }}"
+  with_items: "{{ composer_auth_tokens }}" 
+  tags:
+    - github_oauth
+  when: composer_auth_tokens | count
 
 - name: FILE | Fix permission on satis executable
   file:

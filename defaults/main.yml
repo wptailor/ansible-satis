@@ -33,3 +33,10 @@ satis_archive:
 satis_providers: false
 satis_config: {}
 satis_notify_batch: ""
+
+# see https://getcomposer.org/doc/articles/authentication-for-private-packages.md
+# for possible key formats, example:
+# composer_auth_tokens:
+#   - name: github-oauth.github.com
+#     value: "37b023f6b1j9e07m9208125aea868238014c5468"
+composer_auth_tokens: []
