@@ -1,5 +1,5 @@
 {
-  "name": "{{ satis_repo_name }}",
+  "name": "{{ satis_package_name }}",
   "homepage": "{{ satis_repo_homepage }}",
   "repositories": {{ satis_repos | to_nice_json }},
 {% if satis_archive %}  "archive": {{ satis_archive | to_nice_json }},{% endif %}

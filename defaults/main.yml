@@ -13,6 +13,7 @@ satis_manage_cron: true
 satis_version: "alpha"
 
 # Configuration
+satis_package_name: "mycompany/packagist"
 satis_repo_name: "satis repository"
 satis_repo_homepage: "http://localhost/"
 satis_repos:
