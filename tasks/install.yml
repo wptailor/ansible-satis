@@ -18,6 +18,7 @@
   register: satis_installed
 
 - name: COMPOSER | Install satis
+  become_user: "{{ satis_user }}"
   composer:
     command: "create-project"
     arguments: "composer/satis --stability={{ satis_version }} --no-dev --keep-vcs"
@@ -25,6 +26,7 @@
   when: satis_installed.stat.exists == false
 
 - name: COMPOSER | Configure Composer to ignore ssl
+  become_user: "{{ satis_user }}"
   composer:
     command: "config"
     arguments: "-g secure-http false"
