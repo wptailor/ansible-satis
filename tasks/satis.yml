@@ -19,12 +19,24 @@
     paths: "{{ satis_build_dir }}"
   register: find_satis_build_dir
 
+- name: "ssh-agent hack: grant access to the {{ satis_user }} user"
+  acl: 
+    path: "{{ item }}" 
+    etype: user
+    entity: "{{ satis_user }}" 
+    permissions: "rwx"
+    state: present
+  with_items:
+    - "{{ ansible_env.SSH_AUTH_SOCK | dirname }}"
+    - "{{ ansible_env.SSH_AUTH_SOCK }}"
+
 - name: COMMAND | Build the repository
   command: "{{ satis_build_command }}"
   when: >
     satis_config_file_created.changed == true or
     find_satis_build_dir.matched == 0
   become: yes
+  become_flags: --preserve-env=SSH_AUTH_SOCK
   become_user: "{{ satis_user }}"
 
 - name: FILE | Fix owner/group
