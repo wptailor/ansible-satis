@@ -34,7 +34,8 @@
   command: "{{ satis_build_command }}"
   when: >
     satis_config_file_created.changed == true or
-    find_satis_build_dir.matched == 0
+    find_satis_build_dir.matched == 0 or
+    satis_force_build
   become: yes
   become_flags: --preserve-env=SSH_AUTH_SOCK
   become_user: "{{ satis_user }}"

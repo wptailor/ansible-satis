@@ -40,3 +40,4 @@ satis_notify_batch: ""
 #   - name: github-oauth.github.com
 #     value: "37b023f6b1j9e07m9208125aea868238014c5468"
 composer_auth_tokens: []
+satis_force_build: false
